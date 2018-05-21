@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import App from './App.vue';
-import { getRoot } from './utils/registry';
+import { appRegistry } from 'app-mediator';
 
-const appRoot = getRoot('vue-app', '#root') || document.querySelector('#root');
+const appRoot =
+  appRegistry.findContainer('vue-app', '#root') || document.querySelector('#root');
 
 new Vue({
-	el: appRoot,
-	render: (h) => h(App)
+  el: appRoot,
+  render: (h) => h(App)
 });
